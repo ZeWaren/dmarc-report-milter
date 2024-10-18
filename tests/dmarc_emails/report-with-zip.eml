@@ -1,0 +1,75 @@
+Return-Path: <noreply-dmarc-support@google.com>
+Delivered-To: dmarc-reports@example.net
+Received: by jambon.example.net (Postfix, from userid 58)
+	id A328918ACD2; Mon, 14 Oct 2024 11:40:08 +0200 (CEST)
+Authentication-Results: jambon.example.net;
+	dkim=pass (2048-bit key; unprotected) header.d=google.com header.i=@google.com header.b=uiPxLgim
+X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on jambon.example.net
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.4 required=5.0 tests=BAYES_00,DATE_IN_PAST_06_12,
+	DKIMWL_WL_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,RCVD_IN_DNSWL_NONE,
+	RCVD_IN_MSPIKE_H2,RDNS_NONE,SPF_HELO_SOFTFAIL,TVD_SPACE_RATIO,
+	USER_IN_DEF_DKIM_WL autolearn=no autolearn_force=no version=4.0.1
+Received: from mail1.example.net (unknown [10.2.0.140])
+	by jambon.example.net (Postfix) with ESMTP id 629FB18ACD1
+	for <servers@zwm.fr>; Mon, 14 Oct 2024 11:40:04 +0200 (CEST)
+Received: from astupolis.example.net (unknown [10.25.0.1])
+	by mail1.example.net (Postfix) with ESMTP id 62344753D8
+	for <servers@zwm.fr>; Mon, 14 Oct 2024 09:40:04 +0000 (UTC)
+Received: by astupolis.example.net (Postfix)
+	id 5CAA4179317; Mon, 14 Oct 2024 11:40:04 +0200 (CEST)
+Delivered-To: postmaster@astupolis.example.net
+Received: from mail1.example.net (unknown [10.2.0.140])
+	by astupolis.example.net (Postfix) with ESMTP id 4E985179207
+	for <postmaster@example.net>; Mon, 14 Oct 2024 11:40:04 +0200 (CEST)
+Authentication-Results: astupolis.example.net;
+	dkim=pass (2048-bit key; unprotected) header.d=google.com header.i=@google.com header.b=uiPxLgim
+Received: from mail-qv1-f73.google.com (mail-qv1-f73.google.com [209.85.219.73])
+	by mail1.example.net (Postfix) with ESMTPS id 45C4C753D7
+	for <postmaster@example.net>; Mon, 14 Oct 2024 09:40:04 +0000 (UTC)
+Received: by mail-qv1-f73.google.com with SMTP id 6a1803df08f44-6c513582b05so92050476d6.3
+        for <postmaster@example.net>; Mon, 14 Oct 2024 02:40:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728898797; x=1729503597;
+        h=content-transfer-encoding:content-disposition:to:from:subject
+         :message-id:date:mime-version:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=1zac5A1exIbCnZzxOLf7ftX5O3VLasL++IS9nTuF5nY=;
+        b=BmUq/nnH+KvSli3mCmnxiNZCzy7GXHW6dQmMKAHfKh38BV028YOYmP9QJC+xXFu+Du
+         uZgDDI0aixdMsvxQr0lqo3KqhqedPwYmf+z32tDQYjBE3WzqTHckuqNU9qYsgyw5Kra+
+         taW/9j3t4QQ7TPbLypBQtyaO1o3qiKCewqMg2Hy8kTAlMof4nvqSlgXXoys7tYj8j0IO
+         wFnQEtZrskuv2emT+IlbqAqbqmsAjvwdU/WbZscB/fwPnpQhx0YvQg/vgvSHHZayKoo/
+         CfK7BU3OB7ygysEvEwkR8aEroBRoOxRk02eJO/H/7Wt4Rk7aAeTWFiYmcy16X67a8RI+
+         j7bg==
+X-Gm-Message-State: AOJu0Yz8ANKghfO+g9HXR3B3eWj3K4oZLtJ8KpSDt4kBgDSvYWA4PMi9
+	XsMe2UlH8wbCyVUynYks1zIoSrhxeGT4AMPLl88hh8TZJd54i3cR4EXIwqtSM8RhjNA=
+X-Google-Smtp-Source: AGHT+IEDHsQ4T9xnlPvyNSWFLQnYA4xj4ElJcG4tyfztQMpUviDiRAA6lLsNyLzqKO8s5wuW6f+bpKqQFbpylA==
+MIME-Version: 1.0
+X-Received: by 2002:a05:6214:2c0b:b0:6cb:832e:9267 with SMTP id
+ 6a1803df08f44-6cbf9cb5136mr130684356d6.7.1728898797244; Mon, 14 Oct 2024
+ 02:39:57 -0700 (PDT)
+Date: Sun, 13 Oct 2024 16:59:59 -0700
+Message-ID: <16441118468373874675@google.com>
+Subject: Report domain: example.net Submitter: google.com Report-ID: 16441118468373874675
+From: noreply-dmarc-support@google.com
+To: postmaster@example.net
+Content-Type: application/zip; 
+	name="google.com!example.net!1728777600!1728863999.zip"
+Content-Disposition: attachment; 
+	filename="google.com!example.net!1728777600!1728863999.zip"
+Content-Transfer-Encoding: base64
+
+UEsDBBQAAAAIAMtQUlkZ5L0q8QEAAOkEAAAwAAAAZ29vZ2xlLmNvbSFleGFtcGxlLm5ldCEx
+NzI4Nzc3NjAwITE3Mjg4NjM5OTkueG1srVTBcpswEL13pv/g8d3I2ARwZ6P01C9oz4wsFqwE
+JI0kEufvK2wZKYlneumJ5e3u231PAng6j8PqFY0VSj6u82y7XqHkqhWyf1z/+f1rU69XT/T7
+N+gQ2yPjLz5ercCgVsY1IzrWMscuoIeV6RvJRqS9Uv2AGVcjkAUMRTgyMVCpPMfwvmlHZvjG
+Tnom/Jn2XetuTWdnWMOVdIy7RshO0ZNz2v4gJPRmsZcwwqR9Q0N2RVk+1Fsgd/oDc5AiWpqX
+RZHneV2U9b7a11VRVg9AYj40eMHYGCb7myKPHbEXkubVrq6qqtz6gVdkKUDZXtJ1uT8cDn4f
+ufCRT4RA7rkLWg2Cvzd6Og7CnjCuo7xPkuKZjdrLl+iABCxUsPZFjNQAuQY31OruAs7PgGlq
+8Bm5Z9A3yEbMLqDmjuazyjkImIyFUgchd3f2jnNllv2Neos2WTUZjo3QdLfdZ9ssz/dZsQMS
+8aWUq0n6LYBcgwUPM/GVDZM3tl0ys1fCamWFE0r6CygRSIqkhbNRmlkLJPEsGNKFTDQu0fp5
+LpAoEESL0olO+O8tdp6QtWiazqjx4ymmiRvZVwZgkzs1Bu00uIT189r/vCaXqitN0BdeUu04
++ANWhj6z8agkkAWIPnwYDKlH/2WL1HYgX7QDWW4XkOSf9RdQSwECHwAUAAAACADLUFJZGeS9
+KvEBAADpBAAAMAAkAAAAAAAAACAAAAAAAAAAZ29vZ2xlLmNvbSFleGFtcGxlLm5ldCExNzI4
+Nzc3NjAwITE3Mjg4NjM5OTkueG1sCgAgAAAAAAABABgA248YnzQh2wFSX8i3NCHbASgbsIQ0
+IdsBUEsFBgAAAAABAAEAggAAAD8CAAAAAA==
