@@ -56,6 +56,10 @@ Example:
 
      dmarc-report-milter -s inet:3333@localhost
 
+Postfix configuration example:
+
+    smtpd_milters = inet:localhost:3333
+
 ## Build
 
 The project is written using standard Rust and Cargo logic.
