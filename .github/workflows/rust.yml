@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install libmilter
+      run: apt-get install -y libmilter-dev
     - uses: actions/checkout@v4
     - name: Build
       run: cargo build --verbose
