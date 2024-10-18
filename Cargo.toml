@@ -1,0 +1,17 @@
+[package]
+name = "dmarc-report-milter"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.210", features = ["derive"] }
+serde-xml-rs = "0.6.0"
+chrono = { version = "0.4.38", features = ["serde"] }
+zip = "2.2.0"
+mail-parser = "0.9.4"
+regex = "1.11.0"
+flate2 = "1.0.34"
+milter = "0.2.4"
+libc = "0.2.161"
+clap = { version = "4.5.20", features = ["derive"] }
+syslog = "7.0.0"

@@ -1,0 +1,7 @@
+prefix=/usr/local
+libdir=${prefix}/lib/
+
+Name: milter
+Description: Sendmail Mail Filter API (Milter)
+Version: 8.18.1
+Libs: -L${libdir} -lmilter
