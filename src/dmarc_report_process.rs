@@ -37,8 +37,8 @@ pub fn check_dmarc_record(document: &Feedback, record: &RecordType) -> DMARCReco
             between {} and {}, and doesn't report any failure.",
                                     document.policy_published.domain, record.row.source_ip,
                                     record.row.count,
-                                    document.report_metadata.date_range.begin.unwrap().to_string(),
-                                    document.report_metadata.date_range.end.unwrap().to_string())
+                                    document.report_metadata.date_range.begin.unwrap(),
+                                    document.report_metadata.date_range.end.unwrap())
         }
     } else {
         DMARCRecordEvaluationResult {
@@ -47,8 +47,8 @@ pub fn check_dmarc_record(document: &Feedback, record: &RecordType) -> DMARCReco
             between {} and {}, has failures!.",
                                     document.policy_published.domain, record.row.source_ip,
                                     record.row.count,
-                                    document.report_metadata.date_range.begin.unwrap().to_string(),
-                                    document.report_metadata.date_range.end.unwrap().to_string())
+                                    document.report_metadata.date_range.begin.unwrap(),
+                                    document.report_metadata.date_range.end.unwrap())
         }
     }
 }
