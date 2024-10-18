@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# PROVIDE: milter-dmarc-report
+# REQUIRE: LOGIN networking
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name=milter_dmarc_report
+rcvar=milter_dmarc_report_enable
+
+load_rc_config $name
+: ${milter_dmarc_report_enable:="NO"}
+: ${milter_dmarc_report_socket:="inet:3000@localhost"}
+: ${milter_dmarc_report_user:="postfix"}
+
+milter_dmarc_report_command="%%PREFIX%%/bin/dmarc-report-milter"
+pidfile="/var/run/milter-dmarc-report/${name}.pid"
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} -r -f ${milter_dmarc_report_command} -s ${milter_dmarc_report_socket}"
+
+run_rc_command "$1"

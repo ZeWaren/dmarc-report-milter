@@ -1,0 +1,3 @@
+bin/dmarc-report-milter
+etc/rc.d/milter-dmarc-report
+@dir /var/run/milter-dmarc-report
