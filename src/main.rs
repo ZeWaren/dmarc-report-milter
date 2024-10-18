@@ -49,7 +49,7 @@ fn main() {
 
 
 #[on_header(header_callback)]
-fn handle_header<'a>(mut context: Context<EmailBuffer>, header: &str, value: &'a str) -> milter::Result<Status> {
+fn handle_header(mut context: Context<EmailBuffer>, header: &str, value: &str) -> milter::Result<Status> {
 
     // Initialize the context if it's empty:
     if context.data.borrow_mut().is_none() {
@@ -97,13 +97,13 @@ fn handle_eom(context: Context<EmailBuffer>) -> milter::Result<Status> {
     let report_extraction = extract_reports_from_email(mail_string);
     if report_extraction.is_err() {
         // Something went wrong => let the email continue:
-        write_to_syslog(format!("Could not extract reports from email: {}", report_extraction.unwrap_err().to_string()));
+        write_to_syslog(format!("Could not extract reports from email: {}", report_extraction.unwrap_err()));
         return Ok(Status::Continue);
     }
 
     // Parse and check the reports:
     let reports = report_extraction.unwrap();
-    if reports.len() == 0 {
+    if reports.is_empty() {
         // No reports in the email => let the email continue:
         write_to_syslog("DMARC report email doesn't contain any reports".to_string());
         return Ok(Status::Continue);
@@ -113,18 +113,18 @@ fn handle_eom(context: Context<EmailBuffer>) -> milter::Result<Status> {
         let document_parsing: Result<Feedback, _> = from_str(report.as_str());
         if document_parsing.is_err() {
             // Something went wrong => let the email continue:
-            write_to_syslog(format!("Could not parse DMARC XML: {}", document_parsing.unwrap_err().to_string()));
+            write_to_syslog(format!("Could not parse DMARC XML: {}", document_parsing.unwrap_err()));
             return Ok(Status::Continue);
         }
 
         // Parse and check the records in the report:
         let document = document_parsing.unwrap();
-        if document.record.len() == 0 {
+        if document.record.is_empty() {
             // No record in the email => let the email continue:
             return Ok(Status::Continue);
         }
         for record in &document.record {
-            let record_result = check_dmarc_record(&document, &record);
+            let record_result = check_dmarc_record(&document, record);
             write_to_syslog(record_result.syslog_message);
             if !record_result.result {
                 // The report has failures => accept the email:
