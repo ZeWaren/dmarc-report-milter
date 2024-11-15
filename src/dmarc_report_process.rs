@@ -33,8 +33,9 @@ pub fn check_dmarc_record(document: &Feedback, record: &RecordType) -> DMARCReco
     if check_auth_results(&record.auth_results) {
         DMARCRecordEvaluationResult {
             result: true,
-            syslog_message: format!("DMARC report for {}[{}] matched {} messages \
+            syslog_message: format!("DMARC report from \"{}\" for {}[{}] matched {} messages \
             between {} and {}, and doesn't report any failure.",
+                                    document.report_metadata.org_name,
                                     document.policy_published.domain, record.row.source_ip,
                                     record.row.count,
                                     document.report_metadata.date_range.begin.unwrap(),
@@ -43,8 +44,9 @@ pub fn check_dmarc_record(document: &Feedback, record: &RecordType) -> DMARCReco
     } else {
         DMARCRecordEvaluationResult {
             result: false,
-            syslog_message: format!("DMARC report for {}[{}] matched {} messages \
+            syslog_message: format!("DMARC report from \"{}\" for {}[{}] matched {} messages \
             between {} and {}, has failures!.",
+                                    document.report_metadata.org_name,
                                     document.policy_published.domain, record.row.source_ip,
                                     record.row.count,
                                     document.report_metadata.date_range.begin.unwrap(),
@@ -66,7 +68,7 @@ mod tests {
         let document: Feedback = from_str(message.as_str()).unwrap();
         let result = check_dmarc_record(&document, &document.record[0]);
         assert_eq!(result.result, true);
-        assert_eq!(result.syslog_message, "DMARC report for example.com[203.0.113.42] matched 1 messages between 2024-10-10 00:00:00 UTC and 2024-10-11 00:00:00 UTC, and doesn't report any failure.");
+        assert_eq!(result.syslog_message, "DMARC report from \"Outlook.com\" for example.com[203.0.113.42] matched 1 messages between 2024-10-10 00:00:00 UTC and 2024-10-11 00:00:00 UTC, and doesn't report any failure.");
         Ok(())
     }
 
@@ -76,7 +78,7 @@ mod tests {
         let document: Feedback = from_str(message.as_str()).unwrap();
         let result = check_dmarc_record(&document, &document.record[0]);
         assert_eq!(result.result, false);
-        assert_eq!(result.syslog_message, "DMARC report for example.com[203.0.113.51] matched 1 messages between 2024-10-10 00:00:00 UTC and 2024-10-11 00:00:00 UTC, has failures!.");
+        assert_eq!(result.syslog_message, "DMARC report from \"Outlook.com\" for example.com[203.0.113.51] matched 1 messages between 2024-10-10 00:00:00 UTC and 2024-10-11 00:00:00 UTC, has failures!.");
         Ok(())
     }
 
