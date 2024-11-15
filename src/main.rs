@@ -60,7 +60,7 @@ fn handle_header(mut context: Context<EmailBuffer>, header: &str, value: &str) -
         context.data.replace(email_buffer)?;
     }
 
-    if header == "Subject" {
+    if header == "subject" {
         // If the subject doesn't match the format of a DMARC report, we simply ignore the email,
         // and we pass it forward.
         // Reference: https://datatracker.ietf.org/doc/html/rfc7489#section-7.2.1.1
