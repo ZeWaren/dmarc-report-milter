@@ -1,4 +1,4 @@
-TIMESTAMP = 1729277529
+TIMESTAMP = 1731692523
 SHA256 (rust/crates/adler2-2.0.0.crate) = 512761e0bb2578dd7380c6baaa0f4ce03e84f95e960231d1dec8bf4d7d6e2627
 SIZE (rust/crates/adler2-2.0.0.crate) = 13529
 SHA256 (rust/crates/aes-0.8.4.crate) = b169f7a6d4742236a0a00c541b845991d0ac43e546831af1249753ab4c3aa3a0
@@ -261,5 +261,5 @@ SHA256 (rust/crates/zstd-safe-7.2.1.crate) = 54a3ab4db68cea366acc5c897c7b4d4d1b8
 SIZE (rust/crates/zstd-safe-7.2.1.crate) = 21122
 SHA256 (rust/crates/zstd-sys-2.0.13+zstd.1.5.6.crate) = 38ff0f21cfee8f97d94cef41359e0c89aa6113028ab0291aa8ca0038995a95aa
 SIZE (rust/crates/zstd-sys-2.0.13+zstd.1.5.6.crate) = 749090
-SHA256 (ZeWaren-dmarc-report-milter-1.0.0_GH0.tar.gz) = 936194b138b22f3751806989eeef25d1504962edd10ca4b75650f998296f3d98
-SIZE (ZeWaren-dmarc-report-milter-1.0.0_GH0.tar.gz) = 548932
+SHA256 (ZeWaren-dmarc-report-milter-1.0.1_GH0.tar.gz) = 755e8bb05971439da4abcdb00f746a79a3270f333d05d9722ff52521082b4af0
+SIZE (ZeWaren-dmarc-report-milter-1.0.1_GH0.tar.gz) = 563197

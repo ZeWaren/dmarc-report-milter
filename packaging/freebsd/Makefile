@@ -1,5 +1,5 @@
 PORTNAME=			milter-dmarc-report
-DISTVERSION=		1.0.0
+DISTVERSION=		1.0.1
 CATEGORIES=			mail
 MASTER_SITES=		GH
 
@@ -15,7 +15,7 @@ USES=				cargo ssl
 USE_GITHUB=			yes
 GH_ACCOUNT=			ZeWaren
 GH_PROJECT=			dmarc-report-milter
-GH_TAGNAME=         1.0.0
+GH_TAGNAME=         1.0.1
 MAKE_ENV+=			PKG_CONFIG_PATH=.
 
 USE_RC_SUBR=		${PORTNAME}
